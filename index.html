@@ -1,0 +1,83 @@
+# <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Persona Favorita</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body { background: #0f172a; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glow { box-shadow: 0 0 20px rgba(139, 92, 246, 0.5); }
+        .hiden-section { opacity: 0; transform: translateY(50px); display: none; }
+    </style>
+</head>
+<body>
+
+    <section id="hero" class="h-screen flex flex-col justify-center items-center text-center p-6">
+        <h1 class="text-6xl font-black mb-4 bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent italic">
+            NIVEL 2026 UNLOCKED
+        </h1>
+        <p class="text-gray-400 text-lg mb-8 max-w-md">Hoy no es un día cualquiera. Es el despliegue de una nueva versión de la persona más increíble.</p>
+        <button onclick="startJourney()" class="px-8 py-4 bg-purple-600 hover:bg-purple-500 rounded-full font-bold transition-all glow active:scale-95">
+            INICIAR EXPERIENCIA ⚡
+        </button>
+    </section>
+
+    <section id="main-content" class="hiden-section min-h-screen py-20 px-6">
+        <div class="max-w-3xl mx-auto">
+            
+            <div class="glass p-8 rounded-3xl mb-12 transform transition hover:scale-[1.02]">
+                <span class="text-purple-500 font-mono text-sm">[LOGRO 01: TU EXISTENCIA]</span>
+                <h2 class="text-3xl font-bold mt-2">Un rayito de luz ☀️</h2>
+                <p class="text-gray-300 mt-4">Gracias por llegar al mundo y hacerlo mucho más interesante. Eres esa chispa que mejora cualquier lugar donde estés.</p>
+            </div>
+
+            <div class="glass p-8 rounded-3xl mb-12 transform transition hover:scale-[1.02]">
+                <span class="text-pink-500 font-mono text-sm">[LOGRO 02: NUESTRO EQUIPO]</span>
+                <h2 class="text-3xl font-bold mt-2">Juntos somos imparables 🚀</h2>
+                <p class="text-gray-300 mt-4">Cada risa, cada plan y cada momento compartido es un nivel superado. Gracias por ser mi mejor compañera de aventuras.</p>
+            </div>
+
+            <div class="flex justify-center mt-20">
+                <button onclick="revealSurprise()" id="surprise-btn" class="px-10 py-5 bg-white text-black rounded-full font-black hover:bg-pink-500 hover:text-white transition-all">
+                    VER REGALO FINAL 🎁
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div id="modal" class="fixed inset-0 bg-black/90 hidden flex items-center justify-center p-6 z-50">
+        <div class="glass p-10 rounded-3xl text-center max-w-lg">
+            <h2 class="text-4xl font-black text-pink-500 mb-4">¡Feliz Cumpleaños!</h2>
+            <p class="text-xl leading-relaxed italic">
+                "Eres el código más limpio y bonito que la vida ha escrito. Espero que este nuevo año esté lleno de puros éxitos y momentos brutales."
+            </p>
+            <button onclick="closeModal()" class="mt-8 text-gray-500 underline text-sm">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        function startJourney() {
+            gsap.to("#hero", { opacity: 0, duration: 0.8, onComplete: () => {
+                document.getElementById("hero").style.display = "none";
+                const main = document.getElementById("main-content");
+                main.style.display = "block";
+                gsap.to(main, { opacity: 1, y: 0, duration: 1 });
+            }});
+        }
+
+        function revealSurprise() {
+            const modal = document.getElementById("modal");
+            modal.classList.remove("hidden");
+            gsap.from("#modal div", { scale: 0.5, opacity: 0, duration: 0.5, ease: "back.out(1.7)" });
+        }
+
+        function closeModal() {
+            document.getElementById("modal").classList.add("hidden");
+        }
+    </script>
+</body>
+</html>
+Primer-cumplea-os-
